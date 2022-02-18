@@ -51,7 +51,7 @@ export function IpValidator(control: FormControl): ValidationErrors {
       validationMessages: [
         {
           name: 'required',
-          message: 'This field is required'
+          message: 'Es requerido'
         },
         {
           name: 'min',

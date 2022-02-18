@@ -11,14 +11,7 @@ import { of } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   form = new FormGroup({});
-  model = {
-    id: 123123,
-    firstname: 'Juri',
-    age: 34,
-    nationId: 1,
-    cityId: 1,
-    ip: null
-  };
+
   fields: FormlyFieldConfig[] = [
     {
       key: 'id'
@@ -39,17 +32,12 @@ export class AppComponent implements OnInit {
         label: 'respuesta',
         options: []
       },
-      expressionProperties: {
-        'templateOptions.disabled': model => !model.nationId,
-        'model.cityId': '!model.nationId ? null : model.cityId'
-      },
-      hideExpression: model => !model.nationId,
+      hideExpression: model => !model.s,
       hooks: {
         onInit: (field: FormlyFieldConfig) => {
           field.templateOptions.options = field.form
             .get('nationId')
             .valueChanges.pipe(
-              startWith(this.model.nationId),
               switchMap(nationId => this.dataService.getCities(nationId))
             );
         }
