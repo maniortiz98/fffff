@@ -40,7 +40,6 @@ export class DataService {
          })
        }
        console.log(cp);
-
         return cp;
     }));
   }
