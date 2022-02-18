@@ -1,0 +1,17 @@
+
+
+  <div class="example-sidenav-container">
+    <div class="container">
+      <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+        <formly-form
+          [model]="model"
+          [fields]="fields"
+          [form]="form"
+        ></formly-form>
+
+
+      </form>
+      <app-form-debug [form]="form.value" [model]="model"></app-form-debug>
+    </div>
+  </div>
+
