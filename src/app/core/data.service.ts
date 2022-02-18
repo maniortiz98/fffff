@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
-import { AppComponentCustom } from '../app';
 import { CodigoService } from './codigo.service';
 
 @Injectable({
@@ -67,6 +66,8 @@ export class DataService {
     ]);
   }
 
+
+
   async ejecucionServicio(bj) {
 
     let respuesta;
@@ -82,6 +83,7 @@ export class DataService {
 
 
     console.log(this.ejecucionServicio(c));
+
 
 
 

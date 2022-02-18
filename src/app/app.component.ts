@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
       key: 'id'
     },
     {
-      key: 'nationId',
+      key: 'cat',
       type: 'my-autocomplete',
       // type: 'select', // <select>
       templateOptions: {
@@ -36,9 +36,9 @@ export class AppComponent implements OnInit {
       hooks: {
         onInit: (field: FormlyFieldConfig) => {
           field.templateOptions.options = field.form
-            .get('nationId')
+            .get('cat')
             .valueChanges.pipe(
-              switchMap(nationId => this.dataService.getCities(nationId))
+              switchMap(nationId => this.getCities(nationId))
             );
         }
       }
@@ -73,7 +73,15 @@ export class AppComponent implements OnInit {
       })
   }
 
-  getCities(v: any = null) {
+
+  getCities(c: any = null) {
+
+
+    let oo = this.dataService.ejecucionServicio(c)
+    console.log(this.dataService.ejecucionServicio(c));
+    console.log(oo['__zone_symbol__value']);
+
+
 
 
 
@@ -81,43 +89,43 @@ export class AppComponent implements OnInit {
       {
         value: null,
         label: ' -- ',
-        nationId: null
+        acti: null
       },
       {
         value: 1,
-        label: 'BOTANAS Y FRITOS',
-        nationId: "Comercio"
+        label: 'PAPELERÍA',
+        acti: "Comercio"
       },
       {
         value: 12,
-        label: 'PAPELERÍA',
-        nationId: "Comercio"
+        label: 'POLLOS / MENUDO',
+        acti: "Comercio"
       },
       {
         value: 2,
-        label: 'Berlin',
-        nationId: 2
+        label: 'PROD. DE TORTAS Y QUESADILLAS',
+        acti: "Produccion"
       },
       {
         value: 21,
-        label: 'Munich',
-        nationId: 2
+        label: 'PROD. Y VENTA DE HORNOS Y VITRINAS',
+        acti: "Produccion"
       },
       {
         value: 3,
         label: 'San Francisco',
-        nationId: 3
+        acti: "Servicio"
       }
     ]
 
     return of(arr
      .filter(entry => {
-        if (v) {
-          return entry.nationId === v;
+        if (c) {
+          return entry.acti === c;
         } else {
           return true;
         }
       })
     );
-  }
+}
 }
